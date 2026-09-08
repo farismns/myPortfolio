@@ -24,9 +24,11 @@ export default function Contact() {
 
         <div className="contact-links">
           <Reveal delay={0.3}>
-            <a href="mailto:faris.m.saputra@email.com" className="contact-link">
+            <a href="mailto:faris.m.saputra@gmail.com" className="contact-link">
               <span className="contact-link-label">EMAIL</span>
-              <span className="contact-link-value">faris.m.saputra@email.com</span>
+              <span className="contact-link-value">
+                faris.m.saputra@gmail.com
+              </span>
               <span className="contact-arrow">↗</span>
             </a>
           </Reveal>
