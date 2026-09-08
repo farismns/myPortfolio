@@ -1851,7 +1851,7 @@ section h2 {
 ========================= */
 
 /* =========================
-   MOBILE MENU
+   MOBILE MENU - BASE
 ========================= */
 
 .mobile-menu {
@@ -1880,12 +1880,16 @@ section h2 {
 .menu-toggle span {
   position: absolute;
 
-  left: 10px;
+  left: 50%;
 
   width: 22px;
   height: 2px;
 
+  border-radius: 999px;
+
   background: #111827;
+
+  transform: translateX(-50%);
 
   transition:
     transform 0.3s ease,
@@ -1909,7 +1913,7 @@ section h2 {
 ========================= */
 
 .menu-toggle.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateX(-50%) translateY(7px) rotate(45deg);
 }
 
 .menu-toggle.open span:nth-child(2) {
@@ -1917,25 +1921,98 @@ section h2 {
 }
 
 .menu-toggle.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateX(-50%) translateY(-7px) rotate(-45deg);
 }
 
 /* =========================
-   TABLET & MOBILE
+   LARGE TABLET
+   1100px
+========================= */
+
+@media (max-width: 1100px) {
+  section {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .navbar {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+  .hero {
+    gap: 50px;
+
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .about-content {
+    gap: 50px;
+  }
+
+  .experience-left {
+    padding-right: 45px;
+  }
+
+  .experience-right {
+    padding-left: 45px;
+  }
+
+  .project-info {
+    padding: 40px;
+  }
+
+  .project-visual {
+    padding: 30px;
+  }
+
+  .contact-section {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .footer {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+}
+
+/* =========================
+   TABLET
+   900px
 ========================= */
 
 @media (max-width: 900px) {
+  /* =========================
+     GLOBAL
+  ========================= */
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  section {
+    width: 100%;
+    min-height: auto;
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
   /* =========================
      NAVBAR
   ========================= */
 
   .navbar {
-    padding: 18px 30px;
+    padding: 18px 5%;
 
-    /*
-      Keep navbar above
-      the mobile menu.
-    */
     z-index: 10000;
   }
 
@@ -1944,24 +2021,18 @@ section h2 {
     padding-bottom: 13px;
   }
 
-  /* =========================
-     DESKTOP NAVIGATION
-  ========================= */
-
   .navbar-links {
     display: none;
   }
 
-  /* =========================
-     HAMBURGER BUTTON
-  ========================= */
-
   .menu-toggle {
     display: block;
+
+    flex-shrink: 0;
   }
 
   /* =========================
-     MOBILE MENU OVERLAY
+     MOBILE MENU
   ========================= */
 
   .mobile-menu {
@@ -1971,46 +2042,39 @@ section h2 {
 
     width: 100%;
     height: 100dvh;
+    min-height: 100vh;
 
     box-sizing: border-box;
 
     display: flex;
+
     align-items: center;
+    justify-content: center;
 
-    padding: 100px 8% 50px;
+    padding: calc(90px + env(safe-area-inset-top)) 8%
+      calc(40px + env(safe-area-inset-bottom));
 
-    /*
-      Solid white background prevents
-      page content from showing through.
-    */
     background: #ffffff;
 
     opacity: 0;
     visibility: hidden;
 
-    /*
-      Prevent interaction while closed.
-    */
     pointer-events: none;
 
-    transform: translateY(-20px);
+    transform: translateY(-15px);
 
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease,
       transform 0.3s ease;
 
-    /*
-      Keep overlay above all sections.
-    */
     z-index: 9999;
 
+    overflow-x: hidden;
     overflow-y: auto;
-  }
 
-  /* =========================
-     MENU OPEN
-  ========================= */
+    -webkit-overflow-scrolling: touch;
+  }
 
   .mobile-menu-open {
     opacity: 1;
@@ -2023,7 +2087,7 @@ section h2 {
   }
 
   /* =========================
-     MENU CONTENT
+     MOBILE MENU CONTENT
   ========================= */
 
   .mobile-menu-links {
@@ -2041,16 +2105,18 @@ section h2 {
   }
 
   /* =========================
-     MENU ITEM
+     MOBILE NAV LINK
   ========================= */
 
   .mobile-nav-link {
     display: flex;
+
     align-items: center;
 
     gap: 20px;
 
     width: 100%;
+    min-width: 0;
 
     box-sizing: border-box;
 
@@ -2061,6 +2127,8 @@ section h2 {
     color: #6b7280;
 
     font-size: clamp(1.5rem, 5vw, 2.5rem);
+
+    line-height: 1.2;
 
     font-weight: 700;
 
@@ -2082,15 +2150,18 @@ section h2 {
   }
 
   /* =========================
-     MENU NUMBER
+     MOBILE NAV NUMBER
   ========================= */
 
   .mobile-nav-number {
     flex-shrink: 0;
 
+    width: 35px;
     min-width: 35px;
 
     color: #9ca3af;
+
+    font-family: monospace;
 
     font-size: 0.75rem;
 
@@ -2102,15 +2173,210 @@ section h2 {
   .mobile-nav-link.active .mobile-nav-number {
     color: #2563eb;
   }
+
+  /* =========================
+     HERO
+  ========================= */
+
+  .hero {
+    min-height: auto;
+
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+    padding-top: 130px;
+    padding-bottom: 100px;
+
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 750px;
+
+    margin: 0 auto;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .visual-card {
+    width: min(100%, 360px);
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  /* =========================
+     ABOUT
+  ========================= */
+
+  .about-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .about-description {
+    max-width: 750px;
+  }
+
+  /* =========================
+     EXPERIENCE
+  ========================= */
+
+  .experience-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .experience-timeline {
+    max-width: 750px;
+  }
+
+  .experience-left {
+    padding-right: 35px;
+  }
+
+  .experience-right {
+    padding-left: 35px;
+  }
+
+  /* =========================
+     SKILLS
+  ========================= */
+
+  .skills-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* =========================
+     PROJECTS
+  ========================= */
+
+  .projects-section {
+    padding-top: 100px;
+    padding-bottom: 110px;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+  }
+
+  .project-info {
+    padding: 40px;
+  }
+
+  .project-visual {
+    min-height: 380px;
+
+    padding: 35px;
+  }
+
+  .visual-learncheck,
+  .visual-forecasting,
+  .visual-api,
+  .visual-forum,
+  .visual-laptop {
+    width: min(100%, 360px);
+  }
+
+  /* =========================
+     CERTIFICATIONS
+  ========================= */
+
+  .certifications-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  /* =========================
+     CONTACT
+  ========================= */
+
+  .contact-section {
+    min-height: auto;
+
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .footer {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
 }
 
 /* =========================
-   SMALL MOBILE
+   MOBILE
+   600px
 ========================= */
 
 @media (max-width: 600px) {
+  /* =========================
+     GLOBAL
+  ========================= */
+
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: hidden;
+  }
+
+  section {
+    width: 100%;
+
+    min-height: auto;
+
+    padding-top: 90px;
+    padding-bottom: 90px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* =========================
+     NAVBAR
+  ========================= */
+
   .navbar {
     padding: 15px 20px;
+  }
+
+  .navbar-scrolled {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 
   .navbar-logo {
@@ -2122,13 +2388,558 @@ section h2 {
     height: 40px;
   }
 
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
   .mobile-menu {
-    padding: 90px 25px 40px;
+    padding: calc(80px + env(safe-area-inset-top)) 25px
+      calc(35px + env(safe-area-inset-bottom));
   }
 
   .mobile-nav-link {
+    gap: 15px;
+
     padding: 15px 0;
 
-    font-size: 1.5rem;
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  .mobile-nav-number {
+    width: 30px;
+    min-width: 30px;
+
+    font-size: 0.7rem;
+  }
+
+  /* =========================
+     HERO
+  ========================= */
+
+  .hero {
+    padding-top: 110px;
+    padding-bottom: 80px;
+
+    gap: 45px;
+  }
+
+  .hero-label {
+    font-size: 11px;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 13vw, 64px);
+
+    line-height: 0.98;
+  }
+
+  .hero-role {
+    font-size: 14px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    width: 100%;
+
+    max-width: 360px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    gap: 12px;
+  }
+
+  .button-primary,
+  .button-secondary {
+    width: 100%;
+  }
+
+  .visual-card {
+    width: min(100%, 340px);
+
+    height: 400px;
+
+    min-height: 0;
+
+    padding: 0;
+
+    border-radius: 24px;
+  }
+
+  .profile-image-wrapper {
+    width: 100%;
+    height: 400px;
+  }
+
+  /* =========================
+     ABOUT
+  ========================= */
+
+  .about-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .about-header {
+    margin-bottom: 45px;
+  }
+
+  .about-header h2 {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .about-content {
+    gap: 40px;
+  }
+
+  .about-description .about-intro {
+    font-size: 20px;
+  }
+
+  .about-description p {
+    font-size: 15px;
+
+    line-height: 1.75;
+  }
+
+  .info-card {
+    grid-template-columns: 40px 1fr;
+
+    gap: 15px;
+
+    padding: 22px;
+  }
+
+  /* =========================
+     EXPERIENCE
+  ========================= */
+
+  .experience-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .experience-header {
+    margin-bottom: 50px;
+  }
+
+  .experience-header h2 {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .experience-timeline {
+    padding-left: 28px;
+  }
+
+  .timeline-line {
+    left: 6px;
+
+    transform: none;
+  }
+
+  .experience-item {
+    width: 100%;
+
+    margin-bottom: 35px;
+  }
+
+  .experience-left,
+  .experience-right {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding-left: 25px;
+    padding-right: 0;
+
+    text-align: left;
+  }
+
+  .experience-left .timeline-dot,
+  .experience-right .timeline-dot {
+    left: 0;
+    right: auto;
+  }
+
+  .experience-card {
+    padding: 25px 22px;
+  }
+
+  .experience-meta {
+    flex-wrap: wrap;
+
+    gap: 8px;
+  }
+
+  .experience-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .experience-description {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  /* =========================
+     SKILLS
+  ========================= */
+
+  .skills-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .skills-header {
+    margin-bottom: 45px;
+  }
+
+  .skills-header h2 {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .skill-card {
+    padding: 25px;
+  }
+
+  /* =========================
+     PROJECTS
+  ========================= */
+
+  .projects-section {
+    padding-top: 90px;
+    padding-bottom: 100px;
+  }
+
+  .projects-header {
+    margin-bottom: 45px;
+  }
+
+  .projects-header h2 {
+    font-size: clamp(38px, 11vw, 52px);
+  }
+
+  .projects-header > p:last-child {
+    font-size: 15px;
+  }
+
+  .project-card {
+    border-radius: 22px;
+  }
+
+  .project-info {
+    padding: 30px 24px;
+  }
+
+  .project-meta {
+    margin-bottom: 22px;
+  }
+
+  .project-info h3 {
+    font-size: clamp(30px, 9vw, 40px);
+  }
+
+  .project-description {
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+  .project-tags {
+    margin-top: 22px;
+  }
+
+  .project-visual {
+    min-height: 330px;
+
+    padding: 25px;
+  }
+
+  .visual-learncheck,
+  .visual-forecasting,
+  .visual-api,
+  .visual-forum,
+  .visual-laptop {
+    width: min(100%, 360px);
+
+    min-height: 300px;
+  }
+
+  /* =========================
+     CERTIFICATIONS
+  ========================= */
+
+  .certifications-section {
+    padding: 90px 20px;
+  }
+
+  .certifications-header {
+    margin-bottom: 40px;
+  }
+
+  .certification-card {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+    padding: 30px 25px;
+  }
+
+  .certification-number {
+    font-size: 0.9rem;
+  }
+
+  .certification-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .certification-description {
+    font-size: 14px;
+  }
+
+  .certification-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* =========================
+     CONTACT
+  ========================= */
+
+  .contact-section {
+    min-height: auto;
+
+    padding: 100px 20px;
+  }
+
+  .contact-content h2 {
+    font-size: clamp(38px, 12vw, 56px);
+  }
+
+  .contact-description {
+    margin-bottom: 45px;
+
+    font-size: 15px;
+  }
+
+  .contact-link {
+    grid-template-columns: 1fr 30px;
+
+    gap: 10px;
+
+    padding: 20px 0;
+  }
+
+  .contact-link-label {
+    grid-column: 1;
+  }
+
+  .contact-link-value {
+    grid-column: 1;
+
+    min-width: 0;
+
+    font-size: 0.95rem;
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+  }
+
+  .contact-arrow {
+    grid-column: 2;
+
+    grid-row: 1 / span 2;
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+
+  .footer {
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 25px 20px;
+
+    text-align: center;
+  }
+}
+
+/* =========================
+   SMALL PHONE
+   380px
+========================= */
+
+@media (max-width: 380px) {
+  section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  /* =========================
+     NAVBAR
+  ========================= */
+
+  .navbar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .navbar-logo {
+    font-size: 0.85rem;
+  }
+
+  .menu-toggle {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  .mobile-menu {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .mobile-nav-link {
+    gap: 12px;
+
+    padding: 13px 0;
+
+    font-size: 1.35rem;
+  }
+
+  .mobile-nav-number {
+    width: 26px;
+    min-width: 26px;
+  }
+
+  /* =========================
+     HERO
+  ========================= */
+
+  .hero {
+    padding-top: 100px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .visual-card {
+    width: 100%;
+    max-width: 320px;
+
+    height: 360px;
+  }
+
+  .profile-image-wrapper {
+    height: 360px;
+  }
+
+  /* =========================
+     PROJECTS
+  ========================= */
+
+  .project-info {
+    padding: 26px 20px;
+  }
+
+  .project-info h3 {
+    font-size: 29px;
+  }
+
+  .project-visual {
+    min-height: 300px;
+
+    padding: 18px;
+  }
+
+  .visual-learncheck,
+  .visual-forecasting,
+  .visual-api,
+  .visual-forum,
+  .visual-laptop {
+    min-height: 280px;
+  }
+
+  .laptop-icon {
+    transform: scale(0.85);
+  }
+}
+
+/* =========================
+   VERY SMALL PHONE
+   340px
+========================= */
+
+@media (max-width: 340px) {
+  section {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .navbar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero-role {
+    font-size: 13px;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.2rem;
+  }
+
+  .project-info h3 {
+    font-size: 27px;
+  }
+
+  .project-description {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
   }
 }
