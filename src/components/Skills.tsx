@@ -23,19 +23,15 @@ export default function Skills() {
         </Reveal>
       </div>
 
-      <div className="skills-grid">
+      <div className="skills-list">
         {skillCategories.map((category, index) => (
-          <Reveal key={category.number} delay={0.1 + index * 0.1} y={30}>
-            <article className="skill-card">
-              <div className="skill-card-header">
+          <Reveal key={category.number} delay={0.1 + index * 0.08} y={20}>
+            <article className="skill-row">
+              <div className="skill-info">
                 <span className="skill-number">{category.number}</span>
 
-                <span className="skill-count">
-                  {String(category.skills.length).padStart(2, "0")}
-                </span>
+                <h3>{category.title}</h3>
               </div>
-
-              <h3>{category.title}</h3>
 
               <div className="skill-tags">
                 {category.skills.map((skill) => (

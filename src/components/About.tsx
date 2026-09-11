@@ -19,9 +19,9 @@ export default function About() {
         <div className="about-description">
           <Reveal delay={0.15}>
             <p className="about-intro">
-              I&apos;m Faris Maulana Saputra, an Information Systems graduate with
-              hands-on experience in front-end development, back-end
-              development, data analysis, and machine learning.
+              I&apos;m Faris Maulana Saputra, an Information Systems graduate
+              with hands-on experience in front-end development, back-end
+              development, and data analysis.
             </p>
           </Reveal>
 
@@ -29,8 +29,10 @@ export default function About() {
             <p>
               I enjoy learning how technology can be used to solve practical
               problems and building data-driven, user-focused applications. My
-              technical interests include web development, data analytics,
-              machine learning, and time-series forecasting.
+              technical interests focus on Front-End Development, Back-End
+              Development, and Data Analysis, with an interest in developing
+              responsive interfaces, building APIs and backend systems, and
+              transforming data into meaningful insights.
             </p>
           </Reveal>
 
@@ -66,9 +68,11 @@ export default function About() {
               <div>
                 <h3>Focus</h3>
                 <p>
-                  Front-End & Back-End Development
+                  Front-End Development
                   <br />
-                  Data Analytics & Machine Learning
+                  Back-End Development
+                  <br />
+                  Data Analytics
                 </p>
               </div>
             </div>

@@ -72,8 +72,8 @@ export default function Hero() {
           </a>
 
           <a
-            href="/Faris Maulana Saputra_CV.pdf"
-            download="Faris Maulana Saputra_CV.pdf"
+            href="/CV_Faris Maulana Saputra.pdf"
+            download="CV_Faris Maulana Saputra.pdf"
             className="button-secondary"
           >
             Download CV
