@@ -103,11 +103,11 @@ export const projects: Project[] = [
   },
   {
     title: "OpenMusic API",
-    category: "Dicoding Submission",
+    category: "Dicoding Program Project",
     shortDescription:
       "A backend API for managing music data and playlists, with caching and asynchronous processing.",
     description:
-      "OpenMusic API is a backend application developed as part of a Dicoding submission. It provides RESTful API functionality for managing music-related data and playlists. The application also integrates Redis for caching and RabbitMQ for asynchronous message processing.",
+      "OpenMusic API is a backend application developed as part of a Dicoding project. It provides RESTful API functionality for managing music-related data and playlists. The application also integrates Redis for caching and RabbitMQ for asynchronous message processing.",
     features: [
       "RESTful API for managing music data.",
       "Playlist management and related data operations.",
